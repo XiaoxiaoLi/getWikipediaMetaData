@@ -12,4 +12,11 @@ Pre-process the data to change its wikipedia dump format into text format using 
 To run this script, you have to have perl, and the perl module [Parse::MediaWikiDump](http://en.wikipedia.org/wiki/Wikipedia:Computer_help_desk/ParseMediaWikiDump) installed.
 
 ###### Build Lucene index
-`BuildWikiIndex.java` builds the lucene index for the pre-processed dump. The argument `luceneRoute` specifies where to store the generated Lucene index. The argument `inputCleanWikiFile` is the route of the input pre-processed wikipedia dump. It indexes three fields in the wikipedia dump, *title*, *category*, and *text*.
+`BuildWikiIndex.java` builds the lucene index for the pre-processed dump. The argument `luceneRoute` specifies where to store the generated Lucene index. The argument `inputCleanWikiFile` is the route of the input pre-processed wikipedia dump. It indexes three fields in the wikipedia dump, *title*, *category*, and *text*. You need to run this before querying the index. Each time you run it will wipe out the old index that you had and generate new ones, so remember to back up the indexes if you need them.
+
+###### Query the Lucene index
+`queryIndex.java` queries the generated lucene index. The argument `query` is the term that you want to search in the lucene index. It will print the title and category information of all the hits(pages) for this query. You can specify which field to search for the term in
+`  	QueryParser parser = new QueryParser(Version.LUCENE_36, "title",
+				new StandardAnalyzer(Version.LUCENE_36));`
+Here the *title* argument indicates that lucene will search for your query in the *title* field of the pages. You can also set the field to be *category* or *text*.     
+  
