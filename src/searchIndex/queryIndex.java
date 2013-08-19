@@ -29,14 +29,15 @@ public class queryIndex {
 	// main
 	public static void main(String[] args) throws IOException, ParseException {
 		// String query = args[0];
-		String query = "Achilles";// the query to search
+		// mind the file route with different operating systems
+		String query = "domino pizza";// the query to search
 
 		// String indexRoute = args[1];
 		String indexRoute = "luceneIndex";// lucene index folder
 
 		// String outputRoute = args[2];// output file,print the title and
 		// category info of the query to this file
-		String outputRoute = "data\\titleAndCategoryResult.txt";
+		String outputRoute = "data/titleAndCategoryResult.txt";
 		FileWriter fstream = new FileWriter(outputRoute, false);
 		BufferedWriter out = new BufferedWriter(fstream);
 

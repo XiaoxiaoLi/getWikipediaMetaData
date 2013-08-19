@@ -29,7 +29,8 @@ public class BuildWikiIndex {
 		// String luceneRoute = args[0];
 		String luceneRoute = "luceneIndex";
 		// String inputCleanWikiFile =args[1];
-		String inputCleanWikiFile = "data\\wiki_dump_sample.xml_TitleAndCategories.xml";
+		// mind the file route with different operating systems
+		String inputCleanWikiFile = "data/enwiki-20130503-pages-articles-multistream.xml_TitleAndCategories.xml";
 
 		buildIndex(luceneRoute, inputCleanWikiFile);
 		// buildIndex("luceneIndex",args[0]);//build index based on input
@@ -86,14 +87,15 @@ public class BuildWikiIndex {
 				// System.out.println ("done with " + counter +" docs");
 				// }
 				Document doc = new Document();
-
+				// System.out.println(str);
 				items = str.split("-XIAO-");
-				doc.add(new Field("title", items[0], Field.Store.YES,
-						Field.Index.ANALYZED));
-				doc.add(new Field("category", items[1], Field.Store.YES,
-						Field.Index.ANALYZED));
-				doc.add(new Field("text", items[2], Field.Store.YES,
-						Field.Index.ANALYZED));
+				if (items.length == 2) {
+					doc.add(new Field("title", items[0], Field.Store.YES,
+							Field.Index.ANALYZED));
+
+					doc.add(new Field("category", items[1], Field.Store.YES,
+							Field.Index.ANALYZED));
+				}
 				indexWriter.addDocument(doc);
 				counter += 1;
 			}
