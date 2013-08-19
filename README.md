@@ -11,6 +11,8 @@ For illustration purpose, this project contains a small sample of a wikipedia du
 Pre-process the data to change its wikipedia dump format into text format using `perlsrc\\getTitleAndText.pl` so that lucene can read it. I only kept the *title* and *category* information in the meta data, and also the main content of a page. I filtered the pages that are lists or a disambiguation page. You can modify this file so that the dump is pre-processed according to your rules. The sample output of this script is in `data\\wiki_dump_sample.xml_TitleAndCategories.xml`.
 To run this script, you have to have perl, and the perl module [Parse::MediaWikiDump](http://en.wikipedia.org/wiki/Wikipedia:Computer_help_desk/ParseMediaWikiDump) installed.
 
+The [getWikipediaMetaDataWithRedirection](https://github.com/XiaoxiaoLi/getWikipediaMetaData/tree/getWikipediaCategoryWithRedirection) branch takes into account the redirection pages. See that branch for more details.
+
 ###### Build Lucene index
 `BuildWikiIndex.java` builds the lucene index for the pre-processed dump. The argument `luceneRoute` specifies where to store the generated Lucene index. The argument `inputCleanWikiFile` is the route of the input pre-processed wikipedia dump. It indexes three fields in the wikipedia dump, *title*, *category*, and *text*. You need to run this before querying the index. Each time you run it will wipe out the old index that you had and generate new ones, so remember to back up the indexes if you need them.
 
