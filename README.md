@@ -13,3 +13,5 @@ Should be fairly similar to the Master branch. Differences are:
  * The input, output file names are different
 
 * The buildIndex.java and searchIndex.java are slightly different because of the input/output file are different.
+
+Data failed to add to github: data/enwiki-latest-pages-articles1.xml-p000000010p000010000 downloaded from wikipedia
