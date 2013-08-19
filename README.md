@@ -1,8 +1,15 @@
 getWikipediaMetaDataWithRedirection
 ====================
 
-Should be fairly similar to the Master branch. 
+Should be fairly similar to the Master branch. Differences are:
 
-Main difference withe the Master branch is at the preprocessing of the wiki dump part. This branch includes the wikipedia <i>redirection</i> pages. We set the categories of the redirection pages to be the categories they redirect to.
+* Main difference with the Master branch is at the preprocessing of the wiki dump part. This branch includes the wikipedia <i>redirection</i> pages. We set the categories of the redirection pages to be the categories they redirect to.
 
-This branch only cares about categories, not titles.
+* This branch only cares about categories, not titles.
+
+* File names have changed:
+
+ * The perlsrc/getTitleAndText.pl in the master branch is perlsrc/wikiDumpToTitleAndCategories.pl in this branch.
+ * The input, output file names are different
+
+* The buildIndex.java and searchIndex.java are slightly different because of the input/output file are different.
